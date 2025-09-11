@@ -19,12 +19,12 @@ function MovieCard({
     //           poster_path.startsWith("/") ? poster_path : `/${poster_path}`
     //       }`
     //     : NoMovie;
-    const src = tmdbImage(poster_path) ?? NoMovie;
+    const posterSrc = tmdbImage(poster_path) ?? NoMovie;
 
     return (
         <div className="movie-card">
             <img
-                src={src}
+                src={posterSrc}
                 alt={title || "Movie poster"}
                 loading="lazy"
                 onError={(e) => {

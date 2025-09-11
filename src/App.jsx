@@ -47,15 +47,29 @@ function App() {
                 throw new Error("Failed to fetch movies.");
             }
 
+            // const data = await response.json();
+
+            // if (data.Response === "False") {
+            //     setErrorMessage(data.Error || "Failed to fetch movies.");
+            //     setMovieList([]);
+            //     return;
+            // }
+
+            // setMovieList(data.results || []);
+
+            // console.log("status/url:", response.status, response.url);
+            // console.log("content-type:", response.headers.get("content-type"));
+
             const data = await response.json();
 
-            if (data.Response === "False") {
-                setErrorMessage(data.Error || "Failed to fetch movies.");
+            if (!Array.isArray(data.results)) {
+                setErrorMessage(
+                    "HTTP call success. But unexpected response from TMDB"
+                );
                 setMovieList([]);
                 return;
             }
-
-            setMovieList(data.results || []);
+            setMovieList(data.results);
 
             if (query && data.results.length > 0) {
                 await updateSearchCount(query, data.results[0]);
@@ -131,9 +145,17 @@ function App() {
                         <p className="text-red-400">{errorMessage}</p>
                     ) : (
                         <ul>
-                            {movieList.map((movie) => (
-                                <MovieCard key={movie.id} movie={movie} />
-                            ))}
+                            {movieList.length === 0 ? (
+                                // spans across the grid so the message looks intentional
+                                <li className="col-span-full text-gray-100">
+                                    No results for “{debouncedSearchTerm}”. Try
+                                    another title.
+                                </li>
+                            ) : (
+                                movieList.map((movie) => (
+                                    <MovieCard key={movie.id} movie={movie} />
+                                ))
+                            )}
                         </ul>
                     )}
                 </section>
