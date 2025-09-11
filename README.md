@@ -1,4 +1,8 @@
-# Movie App (React + Vite)
+# Movie App 
+
+A small React + Vite app where users can search for movies via the TMDB API and view results as cards. Styled with Tailwind CSS. Appwrite stores simple stats (e.g., top searches). 
+This is a school/learning project inspired by a JavaScript Mastery tutorial, then refactored and adapted for continued learning and practice.
+
 
 ## Features (current)
 - Search movies (TMDB)
@@ -23,8 +27,7 @@
 - Appwrite (Cloud) Databases
 - react-use (for debounce)
 
-## Notes & attribution
-- This is for learning and practices
+## Attribution
 - TMDB
   > This product uses the TMDB API but is not endorsed or certified by TMDB.
 
