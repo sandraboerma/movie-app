@@ -1,12 +1,32 @@
-# React + Vite
+# Movie App (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features (current)
+- Search movies (TMDB)
+- Debounced input to reduce API calls
+- Loading and error states
+- Responsive layout 
+- “Trending” strip based on my Appwrite database
 
-Currently, two official plugins are available:
+## Planned
+- Routing with React Router:
+- / list view
+- /item/:id detail page (works on refresh)
+- /favorites (save in localStorage)
+- * 404 page
+- Empty-state message for “no results”
+- Additonal small UX/accessibility tweaks 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech stack
+- React 18 + Vite
+- Tailwind CSS
+- TMDB API
+- Appwrite (Cloud) Databases
+- react-use (for debounce)
 
-## Expanding the ESLint configuration
+## Notes & attribution
+- This is for learning and practices
+- TMDB
+  > This product uses the TMDB API but is not endorsed or certified by TMDB.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Liscense
+- MIT (see LISCENCE)
