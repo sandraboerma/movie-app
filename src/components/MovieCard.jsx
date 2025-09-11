@@ -1,5 +1,6 @@
 import NoMovie from "../assets/no-movie.png";
 import StarIcon from "../assets/star.svg";
+import { tmdbImage } from "../api/tmdb";
 
 function MovieCard({
     movie: {
@@ -10,14 +11,15 @@ function MovieCard({
         original_language,
     },
 }) {
-    const hasPoster =
-        typeof poster_path === "string" && poster_path.trim().length > 0;
+    // const hasPoster =
+    //     typeof poster_path === "string" && poster_path.trim().length > 0;
 
-    const src = hasPoster
-        ? `https://image.tmdb.org/t/p/w500${
-              poster_path.startsWith("/") ? poster_path : `/${poster_path}`
-          }`
-        : NoMovie;
+    // const src = hasPoster
+    //     ? `https://image.tmdb.org/t/p/w500${
+    //           poster_path.startsWith("/") ? poster_path : `/${poster_path}`
+    //       }`
+    //     : NoMovie;
+    const src = tmdbImage(poster_path) ?? NoMovie;
 
     return (
         <div className="movie-card">

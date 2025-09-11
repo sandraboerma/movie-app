@@ -21,3 +21,9 @@ export async function tmdbFetch(path) {
     }
     return fetch(`${API_BASE_URL}${path}`, API_OPTIONS);
 }
+
+export function tmdbImage(path, size = "w500") {
+    if (!path) return undefined;
+    const p = path.startsWith("/") ? path : `${path}`;
+    return `https://image.tmdb.org/t/p/${size}${p}`;
+}

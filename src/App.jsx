@@ -40,7 +40,7 @@ function App() {
             // const response = await fetch(endpoint, API_OPTIONS);
 
             const endpoint = buildMoviesEndpoint(query);
-            console.log("[endpoint]", endpoint);
+            // console.log("[endpoint]", endpoint);
             const response = await tmdbFetch(endpoint);
 
             if (!response.ok) {
