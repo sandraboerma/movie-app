@@ -5,16 +5,17 @@ import Search from "./components/Search.jsx";
 import Spinner from "./components/Spinner.jsx";
 import MovieCard from "./components/MovieCard.jsx";
 import updateSearchCount, { getTrendingMovies } from "./appwrite.js";
+import { buildMoviesEndpoint, tmdbFetch } from "./api/tmdb.js";
 
-const API_BASE_URL = "https://api.themoviedb.org/3";
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-const API_OPTIONS = {
-    method: "GET",
-    headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${API_KEY}`,
-    },
-};
+// const API_BASE_URL = "https://api.themoviedb.org/3";
+// const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+// const API_OPTIONS = {
+//     method: "GET",
+//     headers: {
+//         accept: "application/json",
+//         Authorization: `Bearer ${API_KEY}`,
+//     },
+// };
 
 function App() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -30,13 +31,17 @@ function App() {
         setIsLoading(true);
         setErrorMessage("");
         try {
-            const endpoint = query
-                ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(
-                      query
-                  )}`
-                : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+            // const endpoint = query
+            //     ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(
+            //           query
+            //       )}`
+            //     : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
 
-            const response = await fetch(endpoint, API_OPTIONS);
+            // const response = await fetch(endpoint, API_OPTIONS);
+
+            const endpoint = buildMoviesEndpoint(query);
+            console.log("[endpoint]", endpoint);
+            const response = await tmdbFetch(endpoint);
 
             if (!response.ok) {
                 throw new Error("Failed to fetch movies.");
