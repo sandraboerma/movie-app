@@ -1,4 +1,5 @@
 import { Client, Databases, ID, Query } from "appwrite";
+import { tmdbImage } from "./api/tmdb.js";
 
 const PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID;
 const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
@@ -12,27 +13,38 @@ const database = new Databases(client);
 
 async function updateSearchCount(searchTerm, movie) {
     try {
+        const key = String(searchTerm ?? "")
+            .trim()
+            .toLowerCase();
+
         const result = await database.listDocuments(DATABASE_ID, TABLE_ID, [
-            Query.equal("searchTerm", searchTerm),
+            Query.equal("searchTerm", key),
         ]);
+
+        const poster = tmdbImage(movie?.poster_path, "w342");
 
         if (result.documents.length > 0) {
             const doc = result.documents[0];
 
             await database.updateDocument(DATABASE_ID, TABLE_ID, doc.$id, {
-                count: doc.count + 1,
+                count: (Number(doc.count) || 0) + 1,
             });
         } else {
             await database.createDocument(DATABASE_ID, TABLE_ID, ID.unique(), {
-                searchTerm,
+                searchTerm: key,
                 count: 1,
                 movie_id: movie.id,
-                title: movie.title,
-                poster_url: `https://image.tmdb.org./t/p/w500${movie.poster_path}`,
+                // title: movie.title,
+                ...(poster !== undefined && { poster_url: poster }),
             });
         }
     } catch (error) {
-        console.error(error);
+        console.error(
+            "Appwrite create/update error:",
+            error?.code,
+            error?.message,
+            error
+        );
     }
 }
 

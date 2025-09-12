@@ -1,5 +1,5 @@
 function Trending({ trendingMovies }) {
-    if (!Array.isArray(trendingMovies) || trendingMovies.length === 9)
+    if (!Array.isArray(trendingMovies) || trendingMovies.length === 0)
         return null;
     return (
         <section className="trending">
