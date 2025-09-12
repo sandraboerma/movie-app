@@ -2,12 +2,18 @@ import Spinner from "./Spinner";
 import MovieCard from "./MovieCard";
 
 function AllMovies({
-    isLoading,
-    errorMessage,
-    movieList,
-    debouncedSearchTerm,
+    isLoading = false,
+    errorMessage = "",
+    movieList = [],
+    debouncedSearchTerm = "",
 }) {
-    const isEmpty = !isLoading && !errorMessage && movieList.length === 0;
+    const isEmpty =
+        !isLoading &&
+        !errorMessage &&
+        movieList.length === 0 &&
+        debouncedSearchTerm.trim().length > 0;
+
+    console.log({ isLoading, errorMessage, movieList, debouncedSearchTerm });
 
     return (
         <section className="all-movies">
