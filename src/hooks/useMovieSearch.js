@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDebounce } from "react-use";
 import { buildMoviesEndpoint, tmdbFetch } from "../api/tmdb";
-import updateSearchCount from "../appwrite";
+import updateSearchCount from "../api/appwrite";
 
 function useMovieSearch() {
     const [searchTerm, setSearchTerm] = useState("");

@@ -1,5 +1,5 @@
 import { Client, Databases, ID, Query } from "appwrite";
-import { tmdbImage } from "./api/tmdb.js";
+import { tmdbImage } from "./tmdb.js";
 
 const PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID;
 const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
@@ -30,13 +30,21 @@ async function updateSearchCount(searchTerm, movie) {
                 count: (Number(doc.count) || 0) + 1,
             });
         } else {
-            await database.createDocument(DATABASE_ID, TABLE_ID, ID.unique(), {
+            const newSearchRow = {
                 searchTerm: key,
                 count: 1,
                 movie_id: movie.id,
-                // title: movie.title,
-                ...(poster !== undefined && { poster_url: poster }),
-            });
+            };
+
+            if (poster !== undefined) {
+                newSearchRow.poster_url = poster;
+            }
+            await database.createDocument(
+                DATABASE_ID,
+                TABLE_ID,
+                ID.unique(),
+                newSearchRow
+            );
         }
     } catch (error) {
         console.error(

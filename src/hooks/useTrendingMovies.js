@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTrendingMovies } from "../appwrite.js";
+import { getTrendingMovies } from "../api/appwrite.js";
 
 function useTrendingMovies() {
     const [trendingMovies, setTrendingMovies] = useState([]);

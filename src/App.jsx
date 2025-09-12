@@ -8,7 +8,7 @@ import Trending from "./components/Trending.jsx";
 import AllMovies from "./components/AllMovies.jsx";
 // import updateSearchCount, { getTrendingMovies } from "./appwrite.js";
 import { buildMoviesEndpoint, tmdbFetch } from "./api/tmdb.js";
-import updateSearchCount from "./appwrite.js";
+import updateSearchCount from "./api/appwrite.js";
 import useTrendingMovies from "./hooks/useTrendingMovies.js";
 import useMovieSearch from "./hooks/useMovieSearch.js";
 
