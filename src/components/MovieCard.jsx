@@ -11,14 +11,6 @@ function MovieCard({
         original_language,
     },
 }) {
-    // const hasPoster =
-    //     typeof poster_path === "string" && poster_path.trim().length > 0;
-
-    // const src = hasPoster
-    //     ? `https://image.tmdb.org/t/p/w500${
-    //           poster_path.startsWith("/") ? poster_path : `/${poster_path}`
-    //       }`
-    //     : NoMovie;
     const posterSrc = tmdbImage(poster_path) ?? NoMovie;
 
     return (

@@ -62,7 +62,6 @@ async function getTrendingMovies() {
             Query.limit(5),
             Query.orderDesc("count"),
         ]);
-        // console.log(result.documents);
         return result.documents;
     } catch (error) {
         console.error(error);

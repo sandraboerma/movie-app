@@ -13,8 +13,6 @@ function AllMovies({
         movieList.length === 0 &&
         debouncedSearchTerm.trim().length > 0;
 
-    console.log({ isLoading, errorMessage, movieList, debouncedSearchTerm });
-
     return (
         <section className="all-movies">
             <h2>All Movies</h2>
