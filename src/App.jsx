@@ -4,6 +4,7 @@ import hero from "./assets/hero.png";
 import Search from "./components/Search.jsx";
 import Spinner from "./components/Spinner.jsx";
 import MovieCard from "./components/MovieCard.jsx";
+import Trending from "./components/Trending.jsx";
 import AllMovies from "./components/AllMovies.jsx";
 import updateSearchCount, { getTrendingMovies } from "./appwrite.js";
 import { buildMoviesEndpoint, tmdbFetch } from "./api/tmdb.js";
@@ -120,7 +121,9 @@ function App() {
                     />
                 </header>
 
-                {trendingMovies.length > 0 && (
+                <Trending trendingMovies={trendingMovies} />
+
+                {/* {trendingMovies.length > 0 && (
                     <section className="trending">
                         <h2>Trending Movies</h2>
 
@@ -136,7 +139,7 @@ function App() {
                             ))}
                         </ul>
                     </section>
-                )}
+                )} */}
 
                 <AllMovies
                     isLoading={isLoading}
