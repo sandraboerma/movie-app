@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 // import { useDebounce } from "react-use";
-import hero from "./assets/hero.png";
-import Search from "./components/Search.jsx";
+// import hero from "./assets/hero.png";
+// import Search from "./components/Search.jsx";
 // import Spinner from "./components/Spinner.jsx";
 // import MovieCard from "./components/MovieCard.jsx";
+import Header from "./components/Header.jsx";
 import Trending from "./components/Trending.jsx";
 import AllMovies from "./components/AllMovies.jsx";
 // import updateSearchCount, { getTrendingMovies } from "./appwrite.js";
-import { buildMoviesEndpoint, tmdbFetch } from "./api/tmdb.js";
-import updateSearchCount from "./api/appwrite.js";
+// import { buildMoviesEndpoint, tmdbFetch } from "./api/tmdb.js";
+// import updateSearchCount from "./api/appwrite.js";
 import useTrendingMovies from "./hooks/useTrendingMovies.js";
 import useMovieSearch from "./hooks/useMovieSearch.js";
 
@@ -124,7 +125,7 @@ function App() {
             <div className="pattern" />
 
             <div className="wrapper">
-                <header>
+                {/* <header>
                     <img src={hero} alt="Hero banner" />
                     <h1>
                         Lets <span className="text-gradient">make this</span>{" "}
@@ -135,8 +136,9 @@ function App() {
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
                     />
-                </header>
+                </header> */}
 
+                <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 <Trending trendingMovies={trendingMovies} />
 
                 {/* {trendingMovies.length > 0 && (
