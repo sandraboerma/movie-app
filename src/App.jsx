@@ -6,14 +6,8 @@ import useTrendingMovies from "./hooks/useTrendingMovies.js";
 import useMovieSearch from "./hooks/useMovieSearch.js";
 
 function App() {
-    const {
-        searchTerm,
-        setSearchTerm,
-        debouncedSearchTerm,
-        movieList,
-        isLoading,
-        errorMessage,
-    } = useMovieSearch();
+    const { searchTerm, setSearchTerm, debouncedSearchTerm, movieList, isLoading, errorMessage } =
+        useMovieSearch();
 
     const trendingMovies = useTrendingMovies();
 

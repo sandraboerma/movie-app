@@ -25,13 +25,10 @@ function AllMovies({
                 <ul>
                     {isEmpty ? (
                         <li className="col-span-full text-gray-300">
-                            No results for "{debouncedSearchTerm}". Try another
-                            title.
+                            No results for "{debouncedSearchTerm}". Try another title.
                         </li>
                     ) : (
-                        movieList.map((movie) => (
-                            <MovieCard key={movie.id} movie={movie} />
-                        ))
+                        movieList.map((movie) => <MovieCard key={movie.id} movie={movie} />)
                     )}
                 </ul>
             )}

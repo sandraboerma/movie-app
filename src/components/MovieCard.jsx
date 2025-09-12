@@ -3,13 +3,7 @@ import StarIcon from "../assets/star.svg";
 import { tmdbImage } from "../api/tmdb";
 
 function MovieCard({
-    movie: {
-        title,
-        vote_average,
-        poster_path,
-        release_date,
-        original_language,
-    },
+    movie: { title, vote_average, poster_path, release_date, original_language },
 }) {
     const posterSrc = tmdbImage(poster_path) ?? NoMovie;
 
@@ -38,9 +32,7 @@ function MovieCard({
                     <p className="lang">{original_language}</p>
 
                     <span>•</span>
-                    <p className="year">
-                        {release_date ? release_date.split("-")[0] : "N/A"}
-                    </p>
+                    <p className="year">{release_date ? release_date.split("-")[0] : "N/A"}</p>
                 </div>
             </div>
         </div>

@@ -28,9 +28,7 @@ function useMovieSearch() {
                 const data = await response.json();
 
                 if (!Array.isArray(data.results)) {
-                    setErrorMessage(
-                        "HTTP call success. But unexpected response from TMDB."
-                    );
+                    setErrorMessage("HTTP call success. But unexpected response from TMDB.");
                     setMovieList([]);
                     return;
                 }
@@ -42,9 +40,7 @@ function useMovieSearch() {
                 }
             } catch (error) {
                 console.error(`Error fetching movies: ${error}`);
-                setErrorMessage(
-                    "Error fetching movies. Please try again later"
-                );
+                setErrorMessage("Error fetching movies. Please try again later");
             } finally {
                 setIsLoading(false);
             }
