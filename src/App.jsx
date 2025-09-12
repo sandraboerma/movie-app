@@ -6,8 +6,10 @@ import Search from "./components/Search.jsx";
 // import MovieCard from "./components/MovieCard.jsx";
 import Trending from "./components/Trending.jsx";
 import AllMovies from "./components/AllMovies.jsx";
-import updateSearchCount, { getTrendingMovies } from "./appwrite.js";
+// import updateSearchCount, { getTrendingMovies } from "./appwrite.js";
 import { buildMoviesEndpoint, tmdbFetch } from "./api/tmdb.js";
+import updateSearchCount from "./appwrite.js";
+import useTrendingMovies from "./hooks/useTrendingMovies.js";
 import useMovieSearch from "./hooks/useMovieSearch.js";
 
 // const API_BASE_URL = "https://api.themoviedb.org/3";
@@ -94,26 +96,28 @@ function App() {
         errorMessage,
     } = useMovieSearch();
 
-    const [trendingMovies, setTrendingMovies] = useState([]);
+    const trendingMovies = useTrendingMovies();
 
-    const loadTrendingMovies = async () => {
-        try {
-            const movies = await getTrendingMovies();
+    // const [trendingMovies, setTrendingMovies] = useState([]);
 
-            setTrendingMovies(movies);
-            console.log(movies);
-        } catch (error) {
-            console.error(`Error fetching trending movies: ${error}`);
-        }
-    };
+    // const loadTrendingMovies = async () => {
+    //     try {
+    //         const movies = await getTrendingMovies();
+
+    //         setTrendingMovies(movies);
+    //         console.log(movies);
+    //     } catch (error) {
+    //         console.error(`Error fetching trending movies: ${error}`);
+    //     }
+    // };
+
+    // // useEffect(() => {
+    // //     fetchMovies(debouncedSearchTerm);
+    // // }, [debouncedSearchTerm]);
 
     // useEffect(() => {
-    //     fetchMovies(debouncedSearchTerm);
-    // }, [debouncedSearchTerm]);
-
-    useEffect(() => {
-        loadTrendingMovies();
-    }, []);
+    //     loadTrendingMovies();
+    // }, []);
 
     return (
         <main>
