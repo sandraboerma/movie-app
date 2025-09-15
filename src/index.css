@@ -112,6 +112,10 @@
             @apply text-white font-bold text-base line-clamp-1;
         }
 
+        & button {
+            @apply absolute bottom-2 right-2 z-10 grid place-items-center h-11 w-11 rounded-full bg-black/60 backdrop-blur-sm ring-1 ring-white/20 hover:ring-white/40 transition-transform hover:scale-110 active:scale-95;
+        }
+
         & .content {
             @apply mt-2 flex flex-row items-center flex-wrap gap-2;
         }
