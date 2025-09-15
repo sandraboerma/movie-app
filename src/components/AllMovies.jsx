@@ -6,6 +6,8 @@ function AllMovies({
     errorMessage = "",
     movieList = [],
     debouncedSearchTerm = "",
+    isFavorite = () => false,
+    toggleFavorite = () => {},
 }) {
     const isEmpty =
         !isLoading &&
@@ -28,7 +30,14 @@ function AllMovies({
                             No results for "{debouncedSearchTerm}". Try another title.
                         </li>
                     ) : (
-                        movieList.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+                        movieList.map((movie) => (
+                            <MovieCard
+                                key={movie.id}
+                                movie={movie}
+                                favored={isFavorite(movie.id)}
+                                onToggle={() => toggleFavorite(movie.id)}
+                            />
+                        ))
                     )}
                 </ul>
             )}
