@@ -12,6 +12,7 @@ function MovieCard({
     return (
         <div className="movie-card relative">
             <button
+                type="button"
                 aria-pressed={favored}
                 onClick={onToggle}
                 title={favored ? "Unfavorite" : "Favorite"}
