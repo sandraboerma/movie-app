@@ -4,11 +4,21 @@ import { tmdbImage } from "../api/tmdb";
 
 function MovieCard({
     movie: { title, vote_average, poster_path, release_date, original_language },
+    favored = false,
+    onToggle = () => {},
 }) {
     const posterSrc = tmdbImage(poster_path) ?? NoMovie;
 
     return (
-        <div className="movie-card">
+        <div className="movie-card relative">
+            <button
+                type="button"
+                aria-pressed={favored}
+                onClick={onToggle}
+                title={favored ? "Unfavorite" : "Favorite"}
+            >
+                {favored ? "❤️" : "🖤"}
+            </button>
             <img
                 src={posterSrc}
                 alt={title || "Movie poster"}

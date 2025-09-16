@@ -4,10 +4,13 @@ import Trending from "./components/Trending.jsx";
 import AllMovies from "./components/AllMovies.jsx";
 import useTrendingMovies from "./hooks/useTrendingMovies.js";
 import useMovieSearch from "./hooks/useMovieSearch.js";
+import useFavorites from "./hooks/useFavorites.js";
 
 function App() {
     const { searchTerm, setSearchTerm, debouncedSearchTerm, movieList, isLoading, errorMessage } =
         useMovieSearch();
+
+    const { isFavorite, toggleFavorite } = useFavorites();
 
     const trendingMovies = useTrendingMovies();
 
@@ -20,6 +23,8 @@ function App() {
                 errorMessage={errorMessage}
                 movieList={movieList}
                 debouncedSearchTerm={debouncedSearchTerm}
+                isFavorite={isFavorite}
+                toggleFavorite={toggleFavorite}
             />
         </Layout>
     );
