@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDebounce } from "react-use";
-import { buildMoviesEndpoint, tmdbFetch } from "../api/tmdb";
+import { buildMoviesEndpoint, tmdbJson } from "../api/tmdb";
 import updateSearchCount from "../api/appwrite";
 
 function useMovieSearch() {
@@ -19,13 +19,15 @@ function useMovieSearch() {
 
             try {
                 const endpoint = buildMoviesEndpoint(query);
-                const response = await tmdbFetch(endpoint);
+                // const response = await tmdbFetch(endpoint);
 
-                if (!response.ok) {
-                    throw new Error("Failed to fetch movies.");
-                }
+                // if (!response.ok) {
+                //     throw new Error("Failed to fetch movies.");
+                // }
 
-                const data = await response.json();
+                // const data = await response.json();
+
+                const data = await tmdbJson(endpoint);
 
                 if (!Array.isArray(data.results)) {
                     setErrorMessage("HTTP call success. But unexpected response from TMDB.");
