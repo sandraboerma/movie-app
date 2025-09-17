@@ -7,10 +7,15 @@ function MovieCard({
     movie: { id, title, vote_average, poster_path, release_date, original_language },
     favored = false,
     onToggle = () => {},
+    linkToDetail = true,
+    imageSize = "w500",
+    className = "",
 }) {
-    const posterSrc = tmdbImage(poster_path) ?? NoMovie;
+    const posterSrc = tmdbImage(poster_path, imageSize) ?? NoMovie;
 
-    const Poster = (
+    const containerClass = className ? `movie-card relative ${className}` : `movie-card relative`;
+
+    const PosterImg = (
         <img
             src={posterSrc}
             alt={title || "Movie poster"}
@@ -23,7 +28,7 @@ function MovieCard({
     );
 
     return (
-        <div className="movie-card relative">
+        <div className={containerClass}>
             <button
                 type="button"
                 aria-pressed={favored}
@@ -33,19 +38,26 @@ function MovieCard({
                 {favored ? "❤️" : "🖤"}
             </button>
 
-            {id ? (
+            {linkToDetail && id ? (
                 <Link to={`/item/${id}`} className="block">
-                    {Poster}
+                    {PosterImg}
                 </Link>
             ) : (
-                Poster
+                PosterImg
             )}
 
             <div className="mt-4">
                 <h3>
-                    <Link to={`/item/${id}`} className="hover:underline">
+                    {linkToDetail && id ? (
+                        <Link to={`/item/${id}`} className="hover:underline">
+                            {title}
+                        </Link>
+                    ) : (
+                        title
+                    )}
+                    {/* <Link to={`/item/${id}`} className="hover:underline">
                         {title}
-                    </Link>
+                    </Link> */}
                 </h3>
 
                 <div className="content">
