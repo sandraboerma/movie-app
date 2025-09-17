@@ -19,13 +19,6 @@ function useMovieSearch() {
 
             try {
                 const endpoint = buildMoviesEndpoint(query);
-                // const response = await tmdbFetch(endpoint);
-
-                // if (!response.ok) {
-                //     throw new Error("Failed to fetch movies.");
-                // }
-
-                // const data = await response.json();
 
                 const data = await tmdbJson(endpoint);
 
