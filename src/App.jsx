@@ -1,32 +1,20 @@
+import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
-import Header from "./components/Header.jsx";
-import Trending from "./components/Trending.jsx";
-import AllMovies from "./components/AllMovies.jsx";
-import useTrendingMovies from "./hooks/useTrendingMovies.js";
-import useMovieSearch from "./hooks/useMovieSearch.js";
-import useFavorites from "./hooks/useFavorites.js";
+import Home from "./pages/Home.jsx";
+import Favorites from "./pages/Favorites.jsx";
+import ItemDetail from "./pages/ItemDetail.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 function App() {
-    const { searchTerm, setSearchTerm, debouncedSearchTerm, movieList, isLoading, errorMessage } =
-        useMovieSearch();
-
-    const { isFavorite, toggleFavorite } = useFavorites();
-
-    const trendingMovies = useTrendingMovies();
-
     return (
-        <Layout>
-            <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            <Trending trendingMovies={trendingMovies} />
-            <AllMovies
-                isLoading={isLoading}
-                errorMessage={errorMessage}
-                movieList={movieList}
-                debouncedSearchTerm={debouncedSearchTerm}
-                isFavorite={isFavorite}
-                toggleFavorite={toggleFavorite}
-            />
-        </Layout>
+        <Routes>
+            <Route element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="favorites" element={<Favorites />} />
+                <Route path="item/:id" element={<ItemDetail />} />
+                <Route path="*" element={<NotFound />} />
+            </Route>
+        </Routes>
     );
 }
 

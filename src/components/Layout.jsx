@@ -1,8 +1,12 @@
-function Layout({ children }) {
+import { Outlet } from "react-router-dom";
+
+function Layout() {
     return (
         <main>
             <div className="pattern" />
-            <div className="wrapper">{children}</div>
+            <div className="wrapper">
+                <Outlet />
+            </div>
         </main>
     );
 }
