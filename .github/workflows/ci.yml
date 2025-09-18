@@ -1,0 +1,43 @@
+name: CI
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: ["**"]
+    workflow_dispatch:
+
+concurrency:
+    group: ci-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: npm
+
+            - name: Install deps
+              run: npm ci
+
+            - name: Lint
+              run: npm run lint
+
+            - name: Prettier check
+              run: npm run format:check
+
+            - name: Build (Vite)
+              run: npm run build
+              env:
+                  VITE_TMDB_API_KEY: "test"
+                  VITE_APPWRITE_PROJECT_ID: "test"
+                  VITE_APPWRITE_DATABASE_ID: "test"
+                  VITE_APPWRITE_TABLE_ID: "test"
