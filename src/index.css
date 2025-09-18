@@ -144,6 +144,25 @@
             @apply text-gray-100 font-medium text-base;
         }
     }
+
+    .page-toolbar {
+        @apply mb-6 md:mb-8 flex items-center justify-between;
+    }
+    .btn-back {
+        @apply underline text-gray-300 hover:text-white transition-colors;
+    }
+    .grid-detail {
+        @apply grid gap-6 md:grid-cols-2 items-start;
+    }
+    .detail-title {
+        @apply text-white text-3xl font-bold mb-4 md:mb-6;
+    }
+    .detail-card {
+        @apply w-full max-w-[360px] mx-auto md:justify-self-center;
+    }
+    .link-primary {
+        @apply underline text-indigo-300 hover:text-indigo-200;
+    }
 }
 
 @utility text-gradient {

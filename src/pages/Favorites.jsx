@@ -10,44 +10,40 @@ function Favorites() {
     const navigate = useNavigate();
 
     return (
-        <>
-            <section className="all-movies">
-                <button
-                    type="button"
-                    onClick={() => navigate(-1)}
-                    className="mb-4 underline text-gray-300"
-                >
+        <section className="all-movies">
+            <div className="page-toolbar">
+                <button type="button" onClick={() => navigate(-1)} className="btn-back">
                     ← Back
                 </button>
                 <h2>All your favorite movies!</h2>
+            </div>
 
-                {isLoading ? (
-                    <Spinner />
-                ) : errorMessage ? (
-                    <p className="text-red-400">{errorMessage}</p>
-                ) : favorites.length === 0 ? (
-                    <p className="text-gray-300">
-                        You don't have any favorites movie selected yet. Go to the home page and tap
-                        the ❤️ on the movies you like!
-                    </p>
-                ) : movieList.length === 0 ? (
-                    <p className="text-gray-300">
-                        None of your favorite moview could be loaded. Please try again later.
-                    </p>
-                ) : (
-                    <ul>
-                        {movieList.map((movie) => (
-                            <MovieCard
-                                key={movie.id}
-                                movie={movie}
-                                favored={isFavorite(movie.id)}
-                                onToggle={() => toggleFavorite(movie.id)}
-                            />
-                        ))}
-                    </ul>
-                )}
-            </section>
-        </>
+            {isLoading ? (
+                <Spinner />
+            ) : errorMessage ? (
+                <p className="text-red-400">{errorMessage}</p>
+            ) : favorites.length === 0 ? (
+                <p className="text-gray-300">
+                    You don't have any favorites yet. Go to the home page and tap the ❤️ on the
+                    movies you like!
+                </p>
+            ) : movieList.length === 0 ? (
+                <p className="text-gray-300">
+                    None of your favorite movie could be loaded. Please try again later.
+                </p>
+            ) : (
+                <ul>
+                    {movieList.map((movie) => (
+                        <MovieCard
+                            key={movie.id}
+                            movie={movie}
+                            favored={isFavorite(movie.id)}
+                            onToggle={() => toggleFavorite(movie.id)}
+                        />
+                    ))}
+                </ul>
+            )}
+        </section>
     );
 }
 
