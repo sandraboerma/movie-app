@@ -57,6 +57,31 @@
         @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;
     }
 
+    .navbar {
+        @apply mb-6 md:mb-8 flex items-center justify-between;
+
+        & .brand {
+            @apply flex items-center gap-2 text-white font-bold tracking-wide;
+        }
+
+        & .brand-logo {
+            @apply h-7 w-7 rounded-md shadow;
+        }
+
+        & .nav-items {
+            @apply flex items-center gap-6;
+        }
+
+        & .nav-link {
+            @apply text-gray-300 underline underline-offset-4 decoration-transparent transition-colors
+           hover:text-white hover:decoration-indigo-300;
+        }
+
+        & .nav-link-active {
+            @apply text-white decoration-indigo-400;
+        }
+    }
+
     .trending {
         @apply mt-20;
 
@@ -143,6 +168,25 @@
         & .content .year {
             @apply text-gray-100 font-medium text-base;
         }
+    }
+
+    .page-toolbar {
+        @apply mb-6 md:mb-8 flex items-center justify-between;
+    }
+    .btn-back {
+        @apply underline text-gray-300 hover:text-white transition-colors;
+    }
+    .grid-detail {
+        @apply grid gap-6 md:grid-cols-2 items-start;
+    }
+    .detail-title {
+        @apply text-white text-3xl font-bold mb-4 md:mb-6;
+    }
+    .detail-card {
+        @apply w-full max-w-[360px] mx-auto md:justify-self-center;
+    }
+    .link-primary {
+        @apply underline text-indigo-300 hover:text-indigo-200;
     }
 }
 

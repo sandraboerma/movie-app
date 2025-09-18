@@ -26,12 +26,8 @@ function ItemDetail() {
                 <h2>Movie details</h2>
                 <p className="text-red-400">{errorMessage || "Not found."}</p>
                 <div className="mt-4">
-                    <button
-                        type="button"
-                        onClick={() => navigate(-1)}
-                        className="underline text-gray-300"
-                    >
-                        ← Go back...
+                    <button type="button" onClick={() => navigate(-1)} className="btn-back">
+                        ← Back
                     </button>
                 </div>
             </section>
@@ -39,38 +35,37 @@ function ItemDetail() {
     }
 
     return (
-        <>
-            <section className="all-movies">
-                <button
-                    type="button"
-                    onClick={() => navigate(-1)}
-                    className="mb-4 underline text-gray-300"
-                >
+        <section className="all-movies">
+            <div className="page-toolbar">
+                <button type="button" onClick={() => navigate(-1)} className="btn-back">
                     ← Back
                 </button>
+                <h2>
+                    <span className="text-gradient">Movie details</span>
+                </h2>
+            </div>
 
-                <div className="grid gap-6 md:grid-cols-2 items-center">
-                    <MovieCard
-                        movie={movie}
-                        favored={isFavorite(movie.id)}
-                        onToggle={() => toggleFavorite(movie.id)}
-                        linkToDetail={false}
-                        imageSize="w780"
-                        className="max-w-[320px] w-full mx-auto"
-                    />
+            <div className="grid-detail">
+                <MovieCard
+                    movie={movie}
+                    favored={isFavorite(movie.id)}
+                    onToggle={() => toggleFavorite(movie.id)}
+                    linkToDetail={false}
+                    imageSize="w780"
+                    className="detail-card"
+                />
 
-                    <div>
-                        <h2 className="text-white text-3xl font-bold mb-2">{movie.title}</h2>
-                        <MovieOverview movie={movie} />
-                        <p className="mt-6">
-                            <Link to="/" className="underline text-gray-300">
-                                Go Home
-                            </Link>
-                        </p>
-                    </div>
+                <div>
+                    <h2 className="detail-title">{movie.title}</h2>
+                    <MovieOverview movie={movie} />
+                    <p className="mt-6">
+                        <Link to="/" className="link-primary">
+                            Go Home
+                        </Link>
+                    </p>
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 }
 
