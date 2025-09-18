@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import MovieCard from "../components/MovieCard";
 import useFavorites from "../hooks/useFavorites";
@@ -6,10 +7,18 @@ import useMoviesByIds from "../hooks/useMoviesByIds";
 function Favorites() {
     const { favorites, isFavorite, toggleFavorite } = useFavorites();
     const { movieList, isLoading, errorMessage } = useMoviesByIds(favorites);
+    const navigate = useNavigate();
 
     return (
         <>
             <section className="all-movies">
+                <button
+                    type="button"
+                    onClick={() => navigate(-1)}
+                    className="mb-4 underline text-gray-300"
+                >
+                    ← Back
+                </button>
                 <h2>All your favorite movies!</h2>
 
                 {isLoading ? (
