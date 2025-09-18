@@ -57,6 +57,31 @@
         @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;
     }
 
+    .navbar {
+        @apply mb-6 md:mb-8 flex items-center justify-between;
+
+        & .brand {
+            @apply flex items-center gap-2 text-white font-bold tracking-wide;
+        }
+
+        & .brand-logo {
+            @apply h-7 w-7 rounded-md shadow;
+        }
+
+        & .nav-items {
+            @apply flex items-center gap-6;
+        }
+
+        & .nav-link {
+            @apply text-gray-300 underline underline-offset-4 decoration-transparent transition-colors
+           hover:text-white hover:decoration-indigo-300;
+        }
+
+        & .nav-link-active {
+            @apply text-white decoration-indigo-400;
+        }
+    }
+
     .trending {
         @apply mt-20;
 
