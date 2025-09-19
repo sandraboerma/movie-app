@@ -58,10 +58,20 @@
     }
 
     .navbar {
-        @apply mb-6 md:mb-8 flex items-center justify-between;
+        @apply sticky top-0 z-50 mb-6 md:mb-8 flex 
+            items-center justify-between
+            rounded-xl px-4 py-3
+            bg-primary/60 backdrop-blur-md
+            ring-1 ring-white/10;
 
         & .brand {
-            @apply flex items-center gap-2 text-white font-bold tracking-wide;
+            @apply min-w-0 flex items-center gap-2 text-white font-bold tracking-wide no-underline 
+            hover:text-white/90 focus-visible:outline-none
+            focus-visible:ring-2 focus-visible:ring-indigo-400 rounded-md;
+        }
+
+        & .brand-name {
+            @apply whitespace-nowrap overflow-hidden text-ellipsis max-w-[55vw] xs:max-w-[60vw];
         }
 
         & .brand-logo {
@@ -72,13 +82,39 @@
             @apply flex items-center gap-6;
         }
 
+        & .menu {
+            @apply hidden md:flex items-center gap-6;
+        }
+
+        & .menu-btn {
+            @apply flex-shrink-0 ml-2 grid place-items-center h-10 w-10 rounded-md
+            text-gray-200 hover:text-white
+            bg-black/30 hover:bg-black/40
+            ring-1 ring-white/10;
+        }
+        & .menu-btn .icon {
+            @apply h-5 w-5;
+        }
+
         & .nav-link {
-            @apply text-gray-300 underline underline-offset-4 decoration-transparent transition-colors
-           hover:text-white hover:decoration-indigo-300;
+            @apply text-gray-300 underline underline-offset-4 decoration-transparent
+            transition-colors hover:text-white hover:decoration-indigo-300;
         }
 
         & .nav-link-active {
             @apply text-white decoration-indigo-400;
+        }
+
+        &.is-open .menu {
+            @apply block md:flex
+                absolute left-0 right-0 top-full mt-2
+                mx-4 p-4 rounded-xl
+                bg-dark-100/90 backdrop-blur-md
+                ring-1 ring-white/10;
+        }
+
+        &.is-open .menu > li {
+            @apply py-1;
         }
     }
 
@@ -187,6 +223,12 @@
     }
     .link-primary {
         @apply underline text-indigo-300 hover:text-indigo-200;
+    }
+
+    @media (max-width: 340px) {
+        .navbar .brand-name {
+            @apply hidden;
+        }
     }
 }
 
