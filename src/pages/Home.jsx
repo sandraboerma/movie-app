@@ -6,8 +6,17 @@ import useTrendingMovies from "../hooks/useTrendingMovies";
 import useFavorites from "../hooks/useFavorites";
 
 function Home() {
-    const { searchTerm, setSearchTerm, debouncedSearchTerm, movieList, isLoading, errorMessage } =
-        useMovieSearch();
+    const {
+        searchTerm,
+        setSearchTerm,
+        debouncedSearchTerm,
+        movieList,
+        isLoading,
+        errorMessage,
+        page,
+        setPage,
+        totalPages,
+    } = useMovieSearch();
 
     const trendingMovies = useTrendingMovies();
 
@@ -24,6 +33,9 @@ function Home() {
                 debouncedSearchTerm={debouncedSearchTerm}
                 isFavorite={isFavorite}
                 toggleFavorite={toggleFavorite}
+                page={page}
+                totalPages={totalPages}
+                onPageChange={setPage}
             />
         </>
     );

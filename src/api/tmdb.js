@@ -8,12 +8,13 @@ const API_OPTIONS = {
     },
 };
 
-function buildMoviesEndpoint(query = "") {
+function buildMoviesEndpoint(query = "", page = 1) {
     const q = String(query ?? "").trim();
+    const p = Math.max(1, Number(page) || 1);
 
     return q
-        ? `/search/movie?query=${encodeURIComponent(q)}`
-        : `/discover/movie?sort_by=popularity.desc`;
+        ? `/search/movie?query=${encodeURIComponent(q)}&page=${p}`
+        : `/discover/movie?sort_by=popularity.desc&page=${p}`;
 }
 
 async function tmdbFetch(path) {

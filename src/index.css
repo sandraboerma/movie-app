@@ -25,6 +25,7 @@
         font-family: "DM Sans", serif;
         font-optical-sizing: auto;
         background: #030014;
+        overflow-x: hidden;
     }
 
     h1 {
@@ -58,16 +59,15 @@
     }
 
     .navbar {
-        @apply sticky top-0 z-50 mb-6 md:mb-8 flex 
-            items-center justify-between
+        @apply sticky top-0 z-[60] mb-6 md:mb-8 
+            flex items-center justify-between
             rounded-xl px-4 py-3
             bg-primary/60 backdrop-blur-md
             ring-1 ring-white/10;
 
         & .brand {
-            @apply min-w-0 flex items-center gap-2 text-white font-bold tracking-wide no-underline 
-            hover:text-white/90 focus-visible:outline-none
-            focus-visible:ring-2 focus-visible:ring-indigo-400 rounded-md;
+            @apply min-w-0 flex items-center gap-2 text-white font-bold tracking-wide no-underline
+                hover:text-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 rounded-md;
         }
 
         & .brand-name {
@@ -88,9 +88,8 @@
 
         & .menu-btn {
             @apply flex-shrink-0 ml-2 grid place-items-center h-10 w-10 rounded-md
-            text-gray-200 hover:text-white
-            bg-black/30 hover:bg-black/40
-            ring-1 ring-white/10;
+                text-gray-200 hover:text-white bg-black/30 hover:bg-black/40
+                ring-1 ring-white/10;
         }
         & .menu-btn .icon {
             @apply h-5 w-5;
@@ -206,6 +205,17 @@
         }
     }
 
+    .pagination {
+        @apply flex items-center justify-center gap-3;
+
+        & .page-list {
+            @apply flex items-center gap-2;
+        }
+    }
+
+    .list-toolbar {
+        @apply mb-8 md:mb-6 flex items-center justify-center md:justify-between gap-3;
+    }
     .page-toolbar {
         @apply mb-6 md:mb-8 flex items-center justify-between;
     }
@@ -223,6 +233,27 @@
     }
     .link-primary {
         @apply underline text-indigo-300 hover:text-indigo-200;
+    }
+    .page-btn-active {
+        @apply bg-indigo-400 text-white;
+    }
+    .page-gap {
+        @apply h-9 w-9 grid place-items-center text-gray-400;
+    }
+    .page-btn {
+        @apply h-9 min-w-[2.25rem] px-3 rounded-full
+            inline-flex items-center justify-center
+            text-gray-200 font-semibold select-none
+            hover:bg-indigo-400/20 hover:text-white
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400
+            disabled:opacity-40 disabled:cursor-not-allowed;
+    }
+    .page-prevnext {
+        @apply h-9 w-auto px-3 rounded-full 
+            text-gray-200 font-semibold whitespace-nowrap
+            hover:bg-indigo-400/20 hover:text-white 
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400
+            disabled:opacity-40 disabled:cursor-not-allowed;
     }
 
     @media (max-width: 340px) {
