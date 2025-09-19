@@ -1,5 +1,6 @@
 import Spinner from "./Spinner";
 import MovieCard from "./MovieCard";
+import Pagination from "./Pagination";
 
 function AllMovies({
     isLoading = false,
@@ -8,6 +9,9 @@ function AllMovies({
     debouncedSearchTerm = "",
     isFavorite = () => false,
     toggleFavorite = () => {},
+    page = 1,
+    totalPages = 1,
+    onPageChange = () => {},
 }) {
     const isEmpty =
         !isLoading &&
@@ -17,7 +21,16 @@ function AllMovies({
 
     return (
         <section className="all-movies">
-            <h2>All Movies</h2>
+            <div className="list-toolbar">
+                <h2>All Movies</h2>
+                <div>
+                    <Pagination page={page} totalPages={totalPages} onChange={onPageChange} />
+                </div>
+            </div>
+
+            <div className="md:hidden flex justify-center mb-2">
+                <Pagination page={page} totalPages={totalPages} onChange={onPageChange} />
+            </div>
 
             {isLoading ? (
                 <Spinner />
@@ -41,6 +54,10 @@ function AllMovies({
                     )}
                 </ul>
             )}
+
+            <div className="mt-4 flex justify-center">
+                <Pagination page={page} totalPages={totalPages} onChange={onPageChange} />
+            </div>
         </section>
     );
 }
