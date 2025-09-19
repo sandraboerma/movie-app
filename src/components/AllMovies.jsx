@@ -22,13 +22,13 @@ function AllMovies({
     return (
         <section className="all-movies">
             <div className="list-toolbar">
-                <h2>All Movies</h2>
-                <div>
+                <h2 className="text-center md:text-left">All Movies</h2>
+                <div className="hidden md:block">
                     <Pagination page={page} totalPages={totalPages} onChange={onPageChange} />
                 </div>
             </div>
 
-            <div className="md:hidden flex justify-center mb-2">
+            <div className="md:hidden mb-8 flex justify-center">
                 <Pagination page={page} totalPages={totalPages} onChange={onPageChange} />
             </div>
 

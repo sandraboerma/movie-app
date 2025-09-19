@@ -25,6 +25,7 @@
         font-family: "DM Sans", serif;
         font-optical-sizing: auto;
         background: #030014;
+        overflow-x: hidden;
     }
 
     h1 {
@@ -58,8 +59,8 @@
     }
 
     .navbar {
-        @apply sticky top-0 z-50 mb-6 md:mb-8 flex 
-            items-center justify-between
+        @apply sticky top-0 z-[60] mb-6 md:mb-8 
+            flex items-center justify-between
             rounded-xl px-4 py-3
             bg-primary/60 backdrop-blur-md
             ring-1 ring-white/10;
@@ -213,7 +214,7 @@
     }
 
     .list-toolbar {
-        @apply mb-4 md:mb-6 flex items-center justify-between gap-3;
+        @apply mb-8 md:mb-6 flex items-center justify-center md:justify-between gap-3;
     }
     .page-toolbar {
         @apply mb-6 md:mb-8 flex items-center justify-between;
